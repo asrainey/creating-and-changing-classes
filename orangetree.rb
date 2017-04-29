@@ -20,8 +20,7 @@ class OrangeTree
   def count_oranges
     if @age <= 2
       puts 'This tree is too young to have oranges.'
-    end
-    if @age >= 30
+    elsif @age >= 30
       puts 'This tree is too old to have oranges.'
     else
       @oranges = @age * 10
