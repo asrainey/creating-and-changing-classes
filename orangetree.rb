@@ -69,6 +69,9 @@ end
 
 tree = OrangeTree.new
 tree.height
+tree.aging
+tree.aging
+tree.aging
 tree.age
 tree.count_oranges
 tree.pick_an_orange
