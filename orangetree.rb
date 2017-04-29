@@ -4,6 +4,7 @@ class OrangeTree
     @height_in_feet = 3
     @age = 0
     @oranges = 0
+    @eaten_oranges = 0
 
     puts "Your tree has been planted."
   end
@@ -11,11 +12,13 @@ class OrangeTree
   def height
     @height_in_feet = 3 * (@age + 1)
     puts "Your tree is #{@height_in_feet} feet tall."
-    one_year_passes
   end
 
   def age
     puts "Your tree is #{@age} years old."
+  end
+
+  def aging
     one_year_passes
   end
 
@@ -28,15 +31,15 @@ class OrangeTree
       @oranges = @age * 10
     end
     puts "The tree has #{@oranges} oranges."
-    one_year_passes
   end
 
   def pick_an_orange
     puts "You go to the tree to pick an orange."
     if @oranges == 0
-      puts 'Oh no! There are no more oranges.'
+      puts 'Oh no! There are no oranges.'
     else
       @oranges = @oranges - 1
+      @eaten_oranges = @eaten_oranges + 1
       puts 'That orange was delicious!'
     end
   end
@@ -51,15 +54,15 @@ class OrangeTree
     end
 
     def one_year_passes
-      if @oranges > 0
-        @oranges = 0
-      end
-
       if @age == 40
         puts 'Your tree has died.'
         exit
       else
         @age = @age + 1
+      end
+
+      if @oranges > 0
+        @oranges = 0
       end
     end
 end
@@ -69,7 +72,8 @@ tree.height
 tree.age
 tree.count_oranges
 tree.pick_an_orange
-tree.age
+tree.aging
+tree.aging
 tree.age
 tree.height
 tree.count_oranges
