@@ -28,7 +28,7 @@ class OrangeTree
     elsif @age >= 30
       puts 'This tree is too old to have oranges.'
     else
-      @oranges = @age * 10
+      @oranges = (@age * 10) - @eaten_oranges
     end
     puts "The tree has #{@oranges} oranges."
   end
@@ -64,6 +64,10 @@ class OrangeTree
       if @oranges > 0
         @oranges = 0
       end
+
+      if @eaten_oranges > 0
+        @eaten_oranges = 0
+      end
     end
 end
 
@@ -80,5 +84,7 @@ tree.aging
 tree.age
 tree.height
 tree.count_oranges
+tree.pick_an_orange
+tree.pick_an_orange
 tree.pick_an_orange
 tree.count_oranges
