@@ -1,16 +1,22 @@
 class OrangeTree
 
-  def initialize tree
-    @tree = tree
+  def initialize
     @height_in_feet = 3
     @age = 0
     @oranges = 0
 
-    puts "#{@tree} has been planted."
+    puts "Your tree has been planted."
+  end
+
+  def height
+    @height_in_feet = @height_in_feet * @age
+    one_year_passes
   end
 
   def aging
-    
+    one_year_passes
+  end
+
   def count_oranges
     if @age <= 2
       puts 'This tree is too young to have oranges.'
@@ -20,94 +26,50 @@ class OrangeTree
     else
       @oranges = @age * 10
     end
+    puts "The tree has #{@oranges} oranges."
+    one_year_passes
   end
 
   def pick_an_orange
-    puts "You pick an orange."
-    @stuff_in_belly = 10
-    passage_of_time
+    puts "You go to the tree to pick an orange."
+    if @oranges == 0
+      puts 'Oh no! There are no more oranges.'
+    else
+      puts 'That orange was delicious!'
+    end
+    @oranges = @oranges - 1
   end
 
-  def walk
-    puts "You walk #{@name}."
-    @stuff_in_intestines = 0
-    passage_of_time
-  end
-
-  def put_to_bed
-    puts "You put #{@name} to bed."
-    @asleep = true
-    3.times do
-      if @asleep
-        passage_of_time
-      end
-      if @asleep
-        puts "#{@name} snores, filling the room with smoke."
-      end
-    end
-      if @asleep
-        @asleep = false
-        puts "#{@name} wakes up slowly."
-      end
+  private
+    def young?
+      @age <= 5
     end
 
-    def toss
-      puts "You toss #{@name} up into the air."
-      puts 'He giggles which singes you eyebrows.'
-      passage_of_time
-    end
-
-    def rock
-      puts "You rock #{@name} gently"
-      @asleep = true
-      puts 'He briefly dozes off....'
-      passage_of_time
-      if @asleep
-        @asleep = false
-        puts '...but wakes up when you stop.'
-      end
-    end
-
-    private
-    def hungry?
-      @stuff_in_belly <= 2
-    end
-
-    def poopy?
-      @stuff_in_intestines >= 8
+    def old?
+      @age <= 25
     end
 
     def one_year_passes
       if @oranges > 0
-        @oranges
-      else
-        if @asleep
-          @asleep = false
-          puts 'He wakes up suddenly!'
-        end
-        puts "#{@name} is starving! In desperation, he ate YOU!"
+        @oranges = 0
+      end
+
+      if @age >= 0
+        @age = @age + 1
+        if @age == 40
+        puts 'Your tree has died.'
         exit
-      end
-
-      if @stuff_in_intestines == 10
-        @stuff_in_intestines = 0
-        puts "Whoops! #{@name} had an accident..."
-      end
-
-      if hungry?
-        if @asleep
-          @asleep = false
-          puts 'He wakes up suddenly!'
         end
-        puts "#{@name}'s stomach grumbles..."
-      end
-
-      if poopy?
-        if @asleep
-          @asleep = false
-          puts 'He wakes up suddenly!'
-        end
-        puts "#{@name} does the potty dance..."
       end
     end
 end
+
+tree = OrangeTree.new
+tree.height
+tree.count_oranges
+tree.pick_an_orange
+tree.count_oranges
+tree.aging
+tree.aging
+tree.height
+tree.count_oranges
