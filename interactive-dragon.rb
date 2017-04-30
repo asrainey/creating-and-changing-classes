@@ -89,6 +89,7 @@ class Dragon
     def recall
       puts 'What would you like to do next?'
         activity = ((gets.chomp).downcase).to_s
+        @activity = activity
         call_method
     end
 
