@@ -68,6 +68,26 @@ class Dragon
         recall
       end
 
+      if (@activity.to_s).include?('walk')
+        puts self.walk
+        recall
+      end
+
+      if (@activity.to_s).include?('bed')
+        puts self.put_to_bed
+        recall
+      end
+
+      if (@activity.to_s).include?('rock')
+        puts self.rock
+        recall
+      end
+
+      if (@activity.to_s).include?('toss')
+        puts self.toss
+        recall
+      end
+
       if (@activity.to_s).include?('exit')
         exit
       else
