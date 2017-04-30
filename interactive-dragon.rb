@@ -56,6 +56,13 @@ class Dragon
     end
 
     private
+    def activity
+      if
+
+      else
+        puts "I'm sorry, that is not something that #{@name} can do.'
+    end
+
     def hungry?
       @stuff_in_belly <= 2
     end
@@ -103,4 +110,13 @@ end
 puts 'Welcome to Dragon Land! What would you like to name your dragon?'
   name = gets.chomp
 
-pet = Dragon.new name.to_s 
+pet = Dragon.new name.to_s
+
+puts 'Here in Dragon Land you can do a few things with your dragon.'
+puts 'You can feed, walk, or toss your dragon. You can also rock it or put it to bed.'
+puts 'Just make sure that your dragon isn\'t too hungry and goes outside regularly.'
+puts 'If you are ready to leave your dragon, type exit.'
+puts "What would you like to do with #{name}?"
+  activity = gets.chomp.to_s
+
+pet.activity
