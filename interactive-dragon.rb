@@ -13,6 +13,7 @@ class Dragon
     puts 'If you are ready to leave your dragon, type exit.'
     puts "What would you like to do with #{@name}?"
     activity = ((gets.chomp).downcase).to_s
+    @activity = activity
   end
 
   def feed
@@ -62,11 +63,18 @@ class Dragon
     end
 
     def call_method
-      if (@activity.to_s).include?('feed') == true
+      if (@activity.to_s).include?('feed')
         puts self.feed
+        recall
+      end
+
+      if (@activity.to_s).include?('exit')
+        exit
       else
         puts "I'm sorry, that is not something that #{@name} can do."
+        recall
       end
+
     end
 
     private
@@ -76,6 +84,12 @@ class Dragon
 
     def poopy?
       @stuff_in_intestines >= 8
+    end
+
+    def recall
+      puts 'What would you like to do next?'
+        activity = ((gets.chomp).downcase).to_s
+        call_method
     end
 
     def passage_of_time
